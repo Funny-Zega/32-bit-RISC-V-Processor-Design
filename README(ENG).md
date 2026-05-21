@@ -2,7 +2,7 @@
 
 This repository contains a Verilog implementation of a 32-bit RISC-V processor (RV32IM). The design features a classic 5-stage pipeline extended with a complex multi-cycle hardware divider and a fast Carry Lookahead Adder. The processor handles data hazards via forwarding and control hazards via flushing, supporting the **M-Extension** (Multiplication and Division).
 
-## 📂 Project Structure
+## Project Structure
 
 | File Name | Description |
 | :--- | :--- |
@@ -11,7 +11,7 @@ This repository contains a Verilog implementation of a 32-bit RISC-V processor (
 | **`cla.v`** | A 32-bit **Carry Lookahead Adder (CLA)**. [cite_start]Used by the ALU for high-speed addition and subtraction [cite: 1-25]. |
 | **`mem_initial_contents.hex`** | Hexadecimal machine code used to initialize the Instruction Memory for simulation/testing. |
 
-## 🚀 Key Features
+## Key Features
 
 ### 1. 5-Stage Pipeline Architecture
 
@@ -33,9 +33,9 @@ The processor implements the standard RISC-V stages:
 
 ### 3. Advanced Hazard Handling
 
-* [cite_start]**Data Hazards:** Solved using a **Forwarding Unit** that bypasses data from MEM, WB, or the **Divider Unit** directly to the EX stage (ALU inputs) [cite: 142-156].
+* **Data Hazards:** Solved using a **Forwarding Unit** that bypasses data from MEM, WB, or the **Divider Unit** directly to the EX stage (ALU inputs) .
 * **Load-Use Hazards:** Detects dependencies on a Load instruction and inserts a stall (bubble).
-* [cite_start]**Structural Hazards (Divider):** Logic is implemented to stall the pipeline if a division result clashes with a standard instruction writeback, or if division operands are not ready [cite: 76-81].
+* **Structural Hazards (Divider):** Logic is implemented to stall the pipeline if a division result clashes with a standard instruction writeback, or if division operands are not ready.
 * **Control Hazards:** Flushes the Fetch/Decode pipeline registers upon taking a Branch or Jump.
 
 ### 4. High-Performance Arithmetic
@@ -54,7 +54,7 @@ The processor supports the following opcode groups:
 * **M-Extension:** `MUL`, `MULH`, `MULHSU`, `MULHU`, `DIV`, `DIVU`, `REM`, `REMU`.
 * **System:** `ECALL` (mapped to `OpcodeEnviron` for halting simulation).
 
-## 📐 Architecture Diagram (Text Concept)
+## Architecture Diagram (Text Concept)
 
 ```mermaid
 graph TD
