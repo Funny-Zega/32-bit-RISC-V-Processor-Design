@@ -5,6 +5,7 @@ module gp1(input wire a, b,
     assign p = a | b; 
 endmodule
 
+
 module gp4(input wire [3:0] gin, pin,
            input wire cin,
            output wire gout, pout,
