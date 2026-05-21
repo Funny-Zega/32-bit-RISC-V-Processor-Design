@@ -6,9 +6,9 @@ This repository contains a Verilog implementation of a 32-bit RISC-V processor (
 
 | File Name | Description |
 | :--- | :--- |
-| **`DatapathPipelined.v`** | The main file containing the **5-stage pipeline logic** (Fetch, Decode, Execute, Memory, Writeback), Hazard/Forwarding Units, and Register File. [cite_start]It also includes the **Data Memory** and the top-level **`Processor`** wrapper for simulation [cite: 227-241]. |
-| **`DividerUnsignedPipelined.v`** | An **8-stage pipelined hardware divider**. [cite_start]It performs 32-bit division using a shift-subtract algorithm (4 iterations per stage) [cite: 242-260]. |
-| **`cla.v`** | A 32-bit **Carry Lookahead Adder (CLA)**. [cite_start]Used by the ALU for high-speed addition and subtraction [cite: 1-25]. |
+| **`DatapathPipelined.v`** | The main file containing the **5-stage pipeline logic** (Fetch, Decode, Execute, Memory, Writeback), Hazard/Forwarding Units, and Register File. It also includes the **Data Memory** and the top-level **`Processor`** wrapper for simulation. |
+| **`DividerUnsignedPipelined.v`** | An **8-stage pipelined hardware divider**. It performs 32-bit division using a shift-subtract algorithm (4 iterations per stage). |
+| **`cla.v`** | A 32-bit **Carry Lookahead Adder (CLA)**. Used by the ALU for high-speed addition and subtraction. |
 | **`mem_initial_contents.hex`** | Hexadecimal machine code used to initialize the Instruction Memory for simulation/testing. |
 
 ## Key Features
@@ -29,7 +29,7 @@ The processor implements the standard RISC-V stages:
 * **Division (`DIV`, `REM`, etc.):**
     * Utilizes a dedicated **8-stage Pipelined Divider** defined in `DividerUnsignedPipelined.v`.
     * Supports Signed and Unsigned division.
-    * [cite_start]Includes a **Shadow Pipeline** in the Datapath to track divider instructions as they propagate, preventing structural hazards at the Writeback stage [cite: 177-190].
+    * Includes a **Shadow Pipeline** in the Datapath to track divider instructions as they propagate, preventing structural hazards at the Writeback stage.
 
 ### 3. Advanced Hazard Handling
 
@@ -42,7 +42,7 @@ The processor implements the standard RISC-V stages:
 
 * **CLA (Carry Lookahead Adder):** Replaces the standard ripple-carry adder in the ALU to reduce critical path delay during arithmetic operations.
 
-## 🛠 Instruction Set Support (RV32IM)
+## Instruction Set Support (RV32IM)
 
 The processor supports the following opcode groups:
 
